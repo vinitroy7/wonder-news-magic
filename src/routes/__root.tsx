@@ -17,6 +17,7 @@ import { Footer } from "@/components/Footer";
 import { CartProvider } from "@/lib/cart-context";
 import { CartDrawer } from "@/components/CartDrawer";
 import { ReadingProgress } from "@/components/ReadingProgress";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
