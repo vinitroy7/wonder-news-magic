@@ -171,6 +171,8 @@ function RootComponent() {
           </main>
           <Footer />
           <CartDrawer />
+          <Toaster position="top-right" richColors closeButton />
+
         </LenisWrapper>
       </CartProvider>
     </QueryClientProvider>
