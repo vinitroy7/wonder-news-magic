@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YoutubeRouteImport } from './routes/youtube'
 import { Route as SubscriptionRouteImport } from './routes/subscription'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const YoutubeRoute = YoutubeRouteImport.update({
+  id: '/youtube',
+  path: '/youtube',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SubscriptionRoute = SubscriptionRouteImport.update({
   id: '/subscription',
   path: '/subscription',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/shop': typeof ShopRoute
   '/subscription': typeof SubscriptionRoute
+  '/youtube': typeof YoutubeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/shop': typeof ShopRoute
   '/subscription': typeof SubscriptionRoute
+  '/youtube': typeof YoutubeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/shop': typeof ShopRoute
   '/subscription': typeof SubscriptionRoute
+  '/youtube': typeof YoutubeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/shop' | '/subscription'
+  fullPaths: '/' | '/about' | '/shop' | '/subscription' | '/youtube'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/shop' | '/subscription'
-  id: '__root__' | '/' | '/about' | '/shop' | '/subscription'
+  to: '/' | '/about' | '/shop' | '/subscription' | '/youtube'
+  id: '__root__' | '/' | '/about' | '/shop' | '/subscription' | '/youtube'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +76,18 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ShopRoute: typeof ShopRoute
   SubscriptionRoute: typeof SubscriptionRoute
+  YoutubeRoute: typeof YoutubeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/youtube': {
+      id: '/youtube'
+      path: '/youtube'
+      fullPath: '/youtube'
+      preLoaderRoute: typeof YoutubeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/subscription': {
       id: '/subscription'
       path: '/subscription'
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ShopRoute: ShopRoute,
   SubscriptionRoute: SubscriptionRoute,
+  YoutubeRoute: YoutubeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
