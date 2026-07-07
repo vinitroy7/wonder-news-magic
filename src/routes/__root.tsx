@@ -82,14 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CurioKids — A Premium Newspaper for Curious Young Minds" },
+      { title: "CurioKids — Learning through news, one story at a time" },
       {
         name: "description",
         content:
           "CurioKids is a premium children's newspaper packed with age-appropriate news, science, comics, puzzles and activities for kids 5-12.",
       },
       { name: "theme-color", content: "#FF6B35" },
-      { property: "og:title", content: "CurioKids — News for curious kids" },
+      { property: "og:title", content: "CurioKids — Learning through news, one story at a time" },
       {
         property: "og:description",
         content:
@@ -98,6 +98,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "CurioKids" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "CurioKids — Learning through news, one story at a time" },
+      { name: "description", content: "A premium children's newspaper packed with news, science, comics and activities kids 5-12 love." },
+      { property: "og:description", content: "A premium children's newspaper packed with news, science, comics and activities kids 5-12 love." },
+      { name: "twitter:description", content: "A premium children's newspaper packed with news, science, comics and activities kids 5-12 love." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/592f7a63-bc18-4c8c-966d-47c619ef7066/id-preview-ee7279c8--d6ebc1ee-3687-4a97-b891-86a81c900509.lovable.app-1783411163824.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/592f7a63-bc18-4c8c-966d-47c619ef7066/id-preview-ee7279c8--d6ebc1ee-3687-4a97-b891-86a81c900509.lovable.app-1783411163824.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
