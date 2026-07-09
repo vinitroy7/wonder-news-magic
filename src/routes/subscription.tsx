@@ -60,16 +60,30 @@ function Subs() {
                   : "border-transparent bg-card soft-shadow hover:scale-[1.01]"
               }`}
             >
-              {p.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-toy">
-                  Most loved 💖
+              {p.badge && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-widest text-primary-foreground shadow-toy">
+                  {p.badge}
                 </div>
               )}
               <div className={`mb-4 h-2 w-14 rounded-full ${p.accent}`} />
-              <h3 className="font-display text-2xl font-bold">{p.name}</h3>
-              <div className="mt-3 flex items-baseline gap-1">
-                <span className="font-display text-5xl font-bold">${p.price}</span>
+              <div className="flex items-center gap-2 text-3xl">{p.emoji}</div>
+              <h3 className="mt-2 font-display text-2xl font-bold leading-tight">{p.name}</h3>
+              <p className="mt-1 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                {p.duration} • {p.editions}
+              </p>
+              <div className="mt-4 flex flex-wrap items-baseline gap-2">
+                <span className="font-display text-5xl font-bold">₹{p.price.toLocaleString("en-IN")}</span>
                 <span className="text-muted-foreground">{p.period}</span>
+              </div>
+              <div className="mt-1 flex items-center gap-2 text-sm">
+                {p.originalPrice && (
+                  <span className="text-muted-foreground line-through">
+                    ₹{p.originalPrice.toLocaleString("en-IN")}
+                  </span>
+                )}
+                <span className="rounded-full bg-sunny/40 px-2 py-0.5 text-xs font-bold">
+                  {p.discount}
+                </span>
               </div>
               <ul className="mt-6 grid gap-2 text-sm">
                 {p.features.map((f) => (
@@ -81,16 +95,18 @@ function Subs() {
                   </li>
                 ))}
               </ul>
+              <p className="mt-4 text-xs italic text-muted-foreground">{p.tagline}</p>
               <button
-                className={`btn-bounce mt-8 w-full rounded-full py-3 font-bold shadow-toy ${
+                className={`btn-bounce mt-6 w-full rounded-full py-3 font-bold shadow-toy ${
                   selected === i
                     ? "bg-primary text-primary-foreground"
                     : "bg-foreground text-background"
                 }`}
               >
-                Choose {p.name}
+                Subscribe Now
               </button>
             </motion.div>
+
           ))}
         </div>
 
