@@ -52,35 +52,106 @@ export const testimonials = [
   { name: "Ms. Fernandes", role: "Librarian", text: "The best children's publication I've seen in twenty years.", emoji: "👩‍🏫" },
 ];
 
-export const plans = [
+export type Plan = {
+  name: string;
+  tagline: string;
+  emoji: string;
+  duration: string;
+  editions: string;
+  price: number;
+  originalPrice?: number;
+  discount: string;
+  period: string;
+  features: string[];
+  color: string;
+  accent: string;
+  popular?: boolean;
+  badge?: string;
+  footnote?: string;
+};
+
+export const plans: Plan[] = [
   {
-    name: "Monthly",
-    price: 9,
-    period: "/month",
-    features: ["4 weekly issues", "Digital + Print", "Activity pack", "Cancel anytime"],
+    name: "Wonder Explorer Starter",
+    tagline: "Perfect for families starting their Wonder journey.",
+    emoji: "🌱",
+    duration: "6 Months",
+    editions: "6 Monthly Learning Editions",
+    price: 996,
+    discount: "10% OFF",
+    period: "/6 months",
+    features: [
+      "6 Wonder Sprouts Learning Editions",
+      "Wonder Explorer Welcome Kit",
+      "Wonder Explorer Badge",
+      "Digital Achievement Certificates",
+      "Monthly Challenges & Fun Contests",
+      "QR Code Interactive Learning",
+      "Parent Activity Guide",
+      "FREE Home Delivery",
+    ],
     color: "bg-mint/20",
     accent: "bg-mint",
     popular: false,
   },
   {
-    name: "Quarterly",
-    price: 24,
-    period: "/3 months",
-    features: ["12 issues", "Digital + Print", "Activity pack", "Free coloring book", "10% savings"],
+    name: "Wonder Explorer Premium",
+    tagline: "Everything in Starter, plus premium perks and a graduation kit.",
+    emoji: "⭐",
+    duration: "12 Months",
+    editions: "12 Monthly Learning Editions",
+    price: 1439,
+    originalPrice: 1599,
+    discount: "10% OFF",
+    period: "/year",
+    features: [
+      "12 Wonder Sprouts Learning Editions",
+      "Exclusive Wonder Explorer Passport",
+      "Wonder Explorer Badge Collection",
+      "Printed Achievement Certificates",
+      "Hall of Fame Eligibility",
+      "FREE Craft Activity Book",
+      "FREE 2 Master Practice Copies",
+      "Annual Wonder Graduation Kit 🎓",
+      "Exciting Contests, Rewards & Recognition",
+      "FREE Home Delivery",
+    ],
     color: "bg-primary/15",
     accent: "bg-primary",
     popular: true,
+    badge: "⭐ MOST POPULAR",
   },
   {
-    name: "Yearly",
-    price: 79,
-    period: "/year",
-    features: ["48 issues", "Digital + Print", "Monthly activity packs", "Free school kit", "25% savings", "Exclusive events"],
+    name: "Wonder Explorer Elite",
+    tagline: "Our best value — two full years of wonder, rewards and recognition.",
+    emoji: "👑",
+    duration: "2 Years",
+    editions: "24 Monthly Learning Editions",
+    price: 2558,
+    originalPrice: 3198,
+    discount: "20% OFF",
+    period: "/2 years",
+    features: [
+      "24 Wonder Sprouts Learning Editions",
+      "Premium Wonder Explorer Passport",
+      "Complete Wonder Badge Collection",
+      "24 Printed Achievement Certificates",
+      "Priority Hall of Fame Recognition",
+      "Premium Craft Activity Book",
+      "FREE 6 Master Practice Copies",
+      "Premium Annual Wonder Graduation Kit 🎓",
+      "Exclusive Member Gifts & Surprise Rewards",
+      "Member-Only Bonus Activities & Printables",
+      "Priority Contest Participation",
+      "FREE Home Delivery for 24 Months",
+    ],
     color: "bg-grape/15",
     accent: "bg-grape",
     popular: false,
+    badge: "👑 BEST VALUE",
   },
 ];
+
 
 export const faqs = [
   { q: "What age group is this for?", a: "Our content is crafted for children aged 5-12, with sections tailored to each reading level." },
