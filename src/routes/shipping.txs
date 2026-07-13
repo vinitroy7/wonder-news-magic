@@ -1,0 +1,166 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { Package, Truck, MapPin, Calendar, ShieldCheck, Headphones } from "lucide-react";
+import { FloatingShapes } from "@/components/FloatingShapes";
+
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "Shipping & Delivery | Wonder Sprouts" },
+      {
+        name: "description",
+        content:
+          "Learn about Wonder Sprouts shipping process, delivery timelines, order tracking, and customer support.",
+      },
+      { property: "og:title", content: "Shipping & Delivery | Wonder Sprouts" },
+      { property: "og:url", content: "/about" },
+    ],
+    links: [{ rel: "canonical", href: "/about" }],
+  }),
+  component: ShippingDelivery,
+});
+
+const shippingDetails = [
+  {
+    icon: MapPin,
+    title: "Delivery Across India",
+    desc: "We deliver Wonder Sprouts monthly learning editions to homes across India.",
+    color: "bg-primary/15 text-primary",
+  },
+  {
+    icon: Package,
+    title: "Order Processing",
+    desc: "Orders are processed after successful payment confirmation.",
+    color: "bg-mint/30 text-mint-foreground",
+  },
+  {
+    icon: Calendar,
+    title: "Monthly Dispatch",
+    desc: "Every monthly edition is dispatched according to our publication schedule.",
+    color: "bg-sunny/40 text-grape",
+  },
+  {
+    icon: Truck,
+    title: "Delivery Timeline",
+    desc: "Delivery timelines may vary depending on your location and courier network.",
+    color: "bg-grape/15 text-grape",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Order Tracking",
+    desc: "Tracking details will be shared via email or SMS once your order has been dispatched.",
+    color: "bg-primary/15 text-primary",
+  },
+  {
+    icon: Headphones,
+    title: "Customer Support",
+    desc: "If your shipment is delayed or arrives damaged, our support team will assist you promptly.",
+    color: "bg-mint/30 text-mint-foreground",
+  },
+];
+
+function ShippingDelivery() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden rounded-b-[48px] rainbow-bg">
+        <FloatingShapes />
+
+        <div className="relative mx-auto max-w-4xl px-6 py-24 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-sm font-bold uppercase tracking-widest text-primary"
+          >
+            Wonder Sprouts
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="mt-3 font-display text-5xl font-bold sm:text-6xl"
+          >
+            Shipping <span className="text-grape">& Delivery</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mx-auto mt-5 max-w-2xl text-lg text-foreground/80"
+          >
+            Every Wonder Sprouts learning edition is carefully packed and delivered
+            to bring a joyful, screen-free learning experience directly to your child.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Shipping Details */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <div className="mb-12 text-center">
+          <h2 className="font-display text-4xl font-bold">
+            Shipping Information
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            Everything you need to know about your Wonder Sprouts delivery.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {shippingDetails.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              className="card-lift rounded-3xl border bg-card p-6"
+            >
+              <div
+                className={`mb-4 grid h-14 w-14 place-items-center rounded-2xl ${item.color}`}
+              >
+                <item.icon className="h-6 w-6" />
+              </div>
+
+              <h3 className="font-display text-xl font-bold">
+                {item.title}
+              </h3>
+
+              <p className="mt-2 text-muted-foreground">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Support Section */}
+      <section className="bg-primary py-20 text-primary-foreground">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="font-display text-4xl font-bold"
+          >
+            We're Here to Help
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mx-auto mt-5 max-w-3xl text-lg opacity-90"
+          >
+            Our goal is simple: to ensure every Wonder Explorer receives their
+            monthly learning adventure safely, securely, and on time. If you
+            have any questions regarding your order or delivery, our customer
+            support team is always happy to assist.
+          </motion.p>
+        </div>
+      </section>
+    </>
+  );
+}
